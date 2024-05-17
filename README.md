@@ -42,17 +42,17 @@ Follow these steps to set up the project:
 1. Copy the example configuration file and customize it with the Hugging Face model you wish to convert to the GGUF
    format:
     ```bash
-    cp guff.example.toml guff.toml
+    cp gguf.example.toml gguf.toml
     ```
 
-2. Edit `guff.toml` to specify your model details.
+2. Edit `gguf.toml` to specify your model details.
 
 ### Running the Conversion
 
 Execute the conversion process with the following command:
 
 ```bash
-python ./guff_n_go.py --config ./guff.toml
+python ./gguf_n_go.py --config ./gguf.toml
 ```
 
 This will generate the quantized model in the specified formats.
