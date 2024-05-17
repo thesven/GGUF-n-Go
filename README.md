@@ -10,7 +10,8 @@ simplifies the process of converting models into various quantized formats for e
 
 Quantization is a key technique in reducing the size of large language models (LLMs) without significantly compromising
 their performance. By converting models to lower precision formats, you can save on storage, reduce latency, and enable
-deployment on resource-constrained environments. GGUF'n'Go supports a wide range of quantization types, ensuring
+deployment on resource-constrained environments. GGUF'n'Go supports a wide range of quantization types
+via [Llama.cpp](https://github.com/ggerganov/llama.cpp), ensuring
 flexibility and efficiency for your specific needs.
 
 ## How to Use
