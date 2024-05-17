@@ -1,0 +1,35 @@
+[huggingface]
+model_name = "microsoft/Phi-3-mini-128k-instruct"
+hugging_face_username = "thesven"
+
+[gguf]
+model_name_base = "Phi-3-mini-128k-instruct"
+output_directory = "./models"
+initial_conversion_output_type = "f16"
+output_types = [
+    "Q4_0",
+    "Q4_1",
+    "Q4_K",
+    "Q4_K_S",
+    "Q4_K_M",
+    "Q5_0",
+    "Q5_1",
+    "Q5_K",
+    "Q5_K_M",
+    "Q5_K_S",
+    "Q6_K",
+    "Q8_0",
+    "Q2_K",
+    "Q3_K",
+    "Q3_K_S",
+    "Q3_K_XS",
+    "IQ2_K",
+    "IQ3_S",
+    "IQ3_XXS",
+    "IQ4_NL",
+    "IQ4_XS",
+    "IQ5_K",
+    "IQ2_S",
+    "IQ2_XS",
+    "IQ1_S"
+]
