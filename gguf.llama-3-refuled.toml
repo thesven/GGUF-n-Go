@@ -1,0 +1,38 @@
+[huggingface]
+model_name = "refuelai/Llama-3-Refueled"
+hugging_face_username = "thesven"
+
+[gguf]
+model_name_base = "Llama-3-Refueled"
+output_directory = "./models"
+initial_conversion_output_type = "bf16"
+output_types = [
+    "Q4_0",
+    "Q4_1",
+    "Q4_K",
+    "Q4_K_S",
+    "Q4_K_M",
+    "Q5_0",
+    "Q5_1",
+    "Q5_K",
+    "Q5_K_M",
+    "Q5_K_S",
+    "Q6_K",
+    "Q8_0",
+    "Q2_K",
+    "Q3_K",
+    "Q3_K_S",
+    "Q3_K_XS",
+]
+
+# this model will require you to update llama.cpp/convert-hf-to-gguf.py to include the tokenizer details for llama.cpp
+# {
+#        "name": "Llama-3-Refueled",
+#        "tokt": TOKENIZER_TYPE.BPE,
+#        "repo": "https://huggingface.co/refuelai/Llama-3-Refueled",
+#    },
+#
+# After updating please run the following command
+# python llama.cpp/convert-hf-to-gguf.py <your_hf_token>
+#
+# this will update convert-hf-to-gguf.py with the new tokenizer details

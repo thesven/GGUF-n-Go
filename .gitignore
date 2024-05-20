@@ -6,3 +6,4 @@ wiki.train.raw
 models/
 main.log
 llama.log
+upload.py

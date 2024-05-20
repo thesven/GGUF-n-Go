@@ -1,0 +1,23 @@
+[huggingface]
+model_name = "meta-llama/Meta-Llama-3-70B-Instruct"
+hugging_face_username = "thesven"
+
+[gguf]
+model_name_base = "Llama-3-70B-Instruct"
+output_directory = "./models"
+initial_conversion_output_type = "bf16"
+output_types = [
+    "Q4_K_M",
+    "Q2_K",
+    "Q3_K",
+    "Q3_K_S",
+    "Q3_K_XS",
+    "IQ2_K",
+    "IQ3_S",
+    "IQ3_XXS",
+    "IQ4_NL",
+    "IQ4_XS",
+    "IQ2_S",
+    "IQ2_XS",
+    "IQ1_S"
+]
