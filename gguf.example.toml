@@ -31,3 +31,6 @@ output_types = [
     "IQ2_XS",
     "IQ1_S"
 ]
+
+[dataset]
+imatrix = "wiki.train.raw" # for using included files, the value should be wiki.train.raw or groups_merged.txt. If you are using a different file, use the path from root here

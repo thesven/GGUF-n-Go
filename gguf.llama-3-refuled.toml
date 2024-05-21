@@ -25,6 +25,9 @@ output_types = [
     "Q3_K_XS",
 ]
 
+[dataset]
+imatrix = "groups_merged.txt"
+
 # this model will require you to update llama.cpp/convert-hf-to-gguf.py to include the tokenizer details for llama.cpp
 # {
 #        "name": "Llama-3-Refueled",

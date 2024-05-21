@@ -21,3 +21,6 @@ output_types = [
     "IQ2_XS",
     "IQ1_S"
 ]
+
+[dataset]
+imatrix = "groups_merged.txt"

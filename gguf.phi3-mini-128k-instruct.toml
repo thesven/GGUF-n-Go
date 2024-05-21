@@ -5,7 +5,7 @@ hugging_face_username = "thesven"
 [gguf]
 model_name_base = "Phi-3-mini-128k-instruct"
 output_directory = "./models"
-initial_conversion_output_type = "f16"
+initial_conversion_output_type = "bf16"
 output_types = [
     "Q4_0",
     "Q4_1",
@@ -33,3 +33,6 @@ output_types = [
     "IQ2_XS",
     "IQ1_S"
 ]
+
+[dataset]
+imatrix = "groups_merged.txt"
