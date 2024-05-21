@@ -14,5 +14,8 @@ cd ../
 rm -rf wikitext-2-raw
 rm -rf wikitext-2-raw-v1.zip
 
+# download the groups merged dataset
+curl -L -O https://github.com/ggerganov/llama.cpp/files/14194570/groups_merged.txt
+
 # create a directory to hold all of the models
 mkdir models

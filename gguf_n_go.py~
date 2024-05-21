@@ -118,7 +118,7 @@ class GGUFNGo:
         return new_model_name
 
     def do_iq_conversion(
-            self, original_model_name, new_model_name, output_type, imatrix_name
+        self, original_model_name, new_model_name, output_type, imatrix_name
     ):
         command = f"./llama.cpp/quantize --imatrix {imatrix_name} {original_model_name} {new_model_name} {output_type}"
         try:
