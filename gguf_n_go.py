@@ -5,7 +5,9 @@ import subprocess
 from typing import Any
 
 import toml
+import torch
 from huggingface_hub import snapshot_download, HfApi, create_repo
+from transformers import AutoModelForCausalLM
 
 
 class GGUFNGo:
@@ -13,7 +15,6 @@ class GGUFNGo:
     huggingface_model_name: str
     huggingface_user_name: str
     gguf_model_name_base: str
-    gguf_initial_conversion_type: str
     gguf_output_types: list[str]
     output_dir: str
     imatrix_path: str
@@ -36,9 +37,6 @@ class GGUFNGo:
             "hugging_face_username"
         ]
         self.gguf_model_name_base = self.config_toml["gguf"]["model_name_base"]
-        self.gguf_initial_conversion_type = self.config_toml["gguf"][
-            "initial_conversion_output_type"
-        ]
         self.gguf_output_types = self.config_toml["gguf"]["output_types"]
         self.output_dir = self.config_toml["gguf"]["output_directory"]
         self.dataset_path = self.config_toml["dataset"]["imatrix"]
@@ -118,7 +116,7 @@ class GGUFNGo:
         return new_model_name
 
     def do_iq_conversion(
-            self, original_model_name, new_model_name, output_type, imatrix_name
+        self, original_model_name, new_model_name, output_type, imatrix_name
     ):
         command = f"./llama.cpp/quantize --imatrix {imatrix_name} {original_model_name} {new_model_name} {output_type}"
         try:
@@ -169,6 +167,16 @@ class GGUFNGo:
                 return True
         return False
 
+    def infer_torch_dtype(self, model_path):
+        tmp_model = AutoModelForCausalLM.from_pretrained(model_path)
+        tmp_model_torch_dtype = tmp_model.config.torch_dtype
+        self.logger.info(f"Model config: {tmp_model.config}")
+        self.logger.info(f"Model torch dtype: {tmp_model_torch_dtype}")
+        if tmp_model_torch_dtype == torch.bfloat16:
+            return "bf16"
+        else:
+            return "f16"
+
     def run(self):
 
         self.logger.info(f"Starting Run ...")
@@ -177,12 +185,13 @@ class GGUFNGo:
         self.download_hf_model(self.huggingface_model_name, self.output_dir)
 
         # do the initial conversion of the model to create the base we will use for the quants
+        initial_conversion_type = self.infer_torch_dtype(
+            f"{self.output_dir}/{self.huggingface_model_name}"
+        )
         initial_model_path = self.do_initial_conversion(
             f"{self.output_dir}/{self.huggingface_model_name}",
-            self.create_model_name(
-                self.gguf_model_name_base, self.gguf_initial_conversion_type
-            ),
-            self.gguf_initial_conversion_type,
+            self.create_model_name(self.gguf_model_name_base, initial_conversion_type),
+            initial_conversion_type,
         )
 
         # check to see if the output types contains any IQ quants as we will need an importance matrix if so

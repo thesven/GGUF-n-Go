@@ -1,9 +1,9 @@
 [huggingface]
-model_name = "NousResearch/Hermes-2-Theta-Llama-3-8B"
+model_name = "microsoft/Phi-3-small-128k-instruct"
 hugging_face_username = "thesven"
 
 [gguf]
-model_name_base = "Hermes-2-Theta-Llama-3-8B"
+model_name_base = "Phi-3-small-128k-instruct"
 output_directory = "./models"
 output_types = [
     "Q4_0",

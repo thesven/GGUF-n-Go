@@ -5,7 +5,6 @@ hugging_face_username = "thesven"
 [gguf]
 model_name_base = "Llama-3-70B-Instruct"
 output_directory = "./models"
-initial_conversion_output_type = "bf16"
 output_types = [
     "Q4_K_M",
     "Q2_K",
