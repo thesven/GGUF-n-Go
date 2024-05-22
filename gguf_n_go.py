@@ -68,7 +68,7 @@ class GGUFNGo:
             folder_path=model_dir,
             repo_id=f"{hf_username}/{base_model_name}-GGUF",
             allow_patterns=[
-                f"{base_model_name}-GGUF-*.bin",
+                f"{base_model_name}-GGUF-*.gguf",
                 f"imatrix_{base_model_name}.dat",
             ],
         )
@@ -91,10 +91,11 @@ class GGUFNGo:
                 process = subprocess.run(
                     command, capture_output=True, text=True, shell=True
                 )
+
                 self.logger.info(f"Conversion complete: {output_model_name}")
             except Exception as e:
                 self.logger.error(f"Error converting model: {e}")
-                return False
+                exit(0)
 
             return output_name
 
@@ -152,12 +153,12 @@ class GGUFNGo:
                 )
             except Exception as e:
                 self.logger.error(f"Error generating importance matrix: {e}")
-                return False
+                exit(0)
             self.logger.info(f"Importance matrix generated: {imatrix_name}")
             return matrix_path
 
     def create_model_name(self, model_base, output_type):
-        return f"{model_base}-GGUF-{output_type}.bin"
+        return f"{model_base}-GGUF-{output_type}.gguf"
 
     def check_for_iq(self):
         # check to see if our output types contains a string that contains IQ

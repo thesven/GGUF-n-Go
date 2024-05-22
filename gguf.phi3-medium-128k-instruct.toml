@@ -1,9 +1,9 @@
 [huggingface]
-model_name = "microsoft/Phi-3-small-128k-instruct"
+model_name = "microsoft/Phi-3-medium-128k-instruct"
 hugging_face_username = "thesven"
 
 [gguf]
-model_name_base = "Phi-3-small-128k-instruct"
+model_name_base = "Phi-3-medium-128k-instruct"
 output_directory = "./models"
 output_types = [
     "Q4_0",
