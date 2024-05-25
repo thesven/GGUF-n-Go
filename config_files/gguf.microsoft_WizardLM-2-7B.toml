@@ -1,9 +1,9 @@
 [huggingface]
-model_name = "microsoft/Phi-3-mini-128k-instruct"
+model_name = "lucyknada/microsoft_WizardLM-2-7B"
 hugging_face_username = "thesven"
 
 [gguf]
-model_name_base = "Phi-3-mini-128k-instruct"
+model_name_base = "microsoft_WizardLM-2-7B"
 output_directory = "./models"
 output_types = [
     "Q4_0",
@@ -34,4 +34,4 @@ output_types = [
 ]
 
 [dataset]
-imatrix = "groups_merged.txt"
+imatrix = "calibration_data.txt"
